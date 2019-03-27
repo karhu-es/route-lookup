@@ -8,7 +8,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-
-struct hash_entry{
+/*struct hash_entry{
 	uint16_t contents;
-}hash_entry_t;
+}hash_entry_t;*/

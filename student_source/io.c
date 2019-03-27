@@ -113,7 +113,6 @@ void printIOExplanationError(int result){
 int readFIBLine(uint32_t *prefix, int *prefixLength, int *outInterface){
 
 	int n[4], result;
-
 	result = fscanf(routingTable, "%i.%i.%i.%i/%i\t%i\n", &n[0], &n[1], &n[2], &n[3], prefixLength, outInterface);
 	if (result == EOF) return REACHED_EOF;
   else if (result != 6) return BAD_ROUTING_TABLE;
@@ -139,6 +138,7 @@ int readInputPacketFileLine(uint32_t *IPAddress){
   int n[4], result;
 
 	result = fscanf(inputFile, "%i.%i.%i.%i\n", &n[0], &n[1], &n[2], &n[3]);
+
 	if (result == EOF) return REACHED_EOF;
   else if (result != 4) return BAD_INPUT_FILE;
   else{
