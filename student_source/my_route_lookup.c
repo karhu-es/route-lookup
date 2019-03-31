@@ -61,8 +61,22 @@ int main(int argc, char *argv[]) {
 
     }else if(prefixLength >  24){
       puts("Prefijo > 24");
-      if((tbl24[table_position] & (uint16_t) pow(2,15) )== 0 ){
+      if ( (tbl24[table_position]   | (uint16_t) pow(2,15)) == tbl24[table_position]  ){
 
+          n_options = pow(2, 32-prefixLength);
+          table_entry = outInterface;
+          table_position = (tbl24[table_position] ^ (uint16_t) pow(2,15)) - CTE;
+          for(j = n_options - 1; j < 2*n_options -1; j++ ){
+            memcpy(&tblong[table_position + j], &table_entry, sizeof(uint16_t));
+          }
+
+          ////Esto es para mostrar en pantalla el resultado
+          for(i = 0; i < TBLong_Block_Size; i++){
+            printf("Valor de la tabla----------------------%d\n", tblong[table_position +i ] );
+          }
+
+        }else{
+          puts("Aqui en la opcion 0 con algo");
           aux = tbl24[table_position];
           n_options = pow(2, 32-prefixLength);
           tblong = realloc(tblong, TBLong_Block_Size);
@@ -72,31 +86,28 @@ int main(int argc, char *argv[]) {
           }
 
           table_entry = CTE + nblocks_tblong*TBLong_Block_Size;
-          table_entry = (uint16_t)(table_entry ^ (uint16_t) pow(2,15));
+          table_entry = (uint16_t)(table_entry | (uint16_t) pow(2,15));
           nblocks_tblong ++;
           memcpy(&tbl24[table_position], &table_entry, sizeof(uint16_t));
           printf("Entrada escrita en posicion %d >> %d\n",table_position, tbl24[table_position] );
           table_entry = outInterface;
 
           for(i = 0; i < TBLong_Block_Size; i++){
-            table_position = nblocks_tblong*256;
+            table_position = nblocks_tblong*TBLong_Block_Size;
             memcpy(&tblong[table_position + i], &aux, sizeof(uint16_t));
 
           }
-          for(j = n_options - 1; j< 2*n_options; j++ ){
+          for(j = n_options - 1; j< 2*n_options - 1; j++ ){
             memcpy(&tblong[table_position + j], &table_entry, sizeof(uint16_t));
           }
+
+          ////Esto es para mostrar en pantalla el resultado
           for(i = 0; i < TBLong_Block_Size; i++){
-            table_position = nblocks_tblong*256;
+            table_position = nblocks_tblong*TBLong_Block_Size;
             printf("Valor de la tabla----------------------%d\n", tblong[table_position +i ] );
 
 
           }
-
-        }else{
-          puts("aqui no hago nada");
-
-
         }
         //printf("Valor de la tabla----------------------%d\n", tblong[table_position] );
 
