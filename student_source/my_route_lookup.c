@@ -93,7 +93,6 @@ int main(int argc, char *argv[]) {
 				tblong_position = prefix & (uint16_t) 0xFF;
 				n_options = pow(2, 32-prefixLength);
 				
-				
 				/*Aumentamos el tamaño de la memoria en un bloque de 256*/
 				tblong = realloc(tblong, BLOCK_SIZE * (++nblocks_tblong) * sizeof(uint16_t));
 				
