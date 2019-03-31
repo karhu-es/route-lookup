@@ -12,4 +12,4 @@ clean:
 	rm -f my_route_lookup
 
 run:
-	./my_route_lookup ../linearSearch/routing_table_simple.txt ../linearSearch/prueba0.txt
+	./my_route_lookup ../linearSearch/routing_table.txt ../linearSearch/prueba0.txt
