@@ -1,0 +1,10 @@
+80.1.3.4;100;1;2025
+129.3.4.4;101;1;1885
+212.1.2.4;101;1;1467
+
+Packets processed = 3
+Average table accesses = 1.00
+Average packet processing time (nsecs) = 1792.33
+Memory (Kbytes) = 34376
+CPU Time (secs)= 0.048425
+

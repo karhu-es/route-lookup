@@ -7,6 +7,7 @@
 #include <sys/resource.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <libgen.h>
 
 
 /********************************************************************
@@ -24,7 +25,7 @@
 
 /***********************************************************************
  * Write the input to the specified file (f) and the standard output
- * 
+ *
  * Use as fprintf(FILE *stream, const char *format, ...)
  *
  ***********************************************************************/
@@ -42,13 +43,13 @@ int initializeIO(char *routingTableName, char *inputFileName);
 
 
 /***********************************************************************
- * Close the input/output files 
+ * Close the input/output files
  ***********************************************************************/
 void freeIO();
 
 
 /***********************************************************************
- * Write explanation for error identifier (verbose mode) 
+ * Write explanation for error identifier (verbose mode)
  ***********************************************************************/
 void printIOExplanationError(int result);
 
@@ -58,7 +59,7 @@ void printIOExplanationError(int result);
  *
  * It should be noted that prefix, prefixLength and outInterface are
  * pointers since they are used as output parameters
- * 
+ *
  ***********************************************************************/
 int readFIBLine(uint32_t *prefix, int *prefixLength, int *outInterface);
 
@@ -68,7 +69,7 @@ int readFIBLine(uint32_t *prefix, int *prefixLength, int *outInterface);
  *
  * Again, it should be noted that IPAddress is a pointer since it is used
  * as output parameter
- * 
+ *
  ***********************************************************************/
 int readInputPacketFileLine(uint32_t *IPAddress);
 
@@ -96,8 +97,8 @@ int readInputPacketFileLine(uint32_t *IPAddress);
  * 		averageTableAccesses = totalTableAccesses/processedPackets
  *
  *		averagePacketProcessingTime = totalPacketProcessingTime/processedPackets
- * 
- ***********************************************************************/                        
+ *
+ ***********************************************************************/
 void printSummary(int processedPackets, double averageTableAccesses, double averagePacketProcessingTime);
 
 
@@ -106,5 +107,5 @@ void printSummary(int processedPackets, double averageTableAccesses, double aver
  *
  * For more info: man getrusage
  *
- ***********************************************************************/    
+ ***********************************************************************/
 void printMemoryTimeUsage();

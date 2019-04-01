@@ -182,7 +182,7 @@ int readInputPacketFileLine(uint32_t *IPAddress){
   if (!outInterface)
     tee(outputFile,"%i.%i.%i.%i;%s;%i;%.0lf\n",IPAddress >> 24, (IPAddress >> 16) & 0x000000ff, (IPAddress >> 8) & 0x000000ff, IPAddress & 0x000000ff , "MISS",numberOfTableAccesses, *searchingTime);
 	else
-	tee(outputFile,"%i.%i.%i.%i;%i;%i;%.0lf\n",IPAddress >> 24, (IPAddress >> 16) & 0x000000ff, (IPAddress >> 8) & 0x000000ff, IPAddress & 0x000000ff , outInterface,numberOfTableAccesses, *searchingTime);
+	 tee(outputFile,"%i.%i.%i.%i;%i;%i;%.0lf\n",IPAddress >> 24, (IPAddress >> 16) & 0x000000ff, (IPAddress >> 8) & 0x000000ff, IPAddress & 0x000000ff , outInterface,numberOfTableAccesses, *searchingTime);
 
 }
 
@@ -198,9 +198,9 @@ int readInputPacketFileLine(uint32_t *IPAddress){
  *
  ***********************************************************************/
 void printSummary(int processedPackets, double averageTableAccesses, double averagePacketProcessingTime){
-	tee(outputFile, "\nPackets processed= %i\n", processedPackets);
-  tee(outputFile, "Average table accesses= %.2lf\n", averageTableAccesses);
-  tee(outputFile,"Average packet processing time (nsecs)= %.2lf\n", averagePacketProcessingTime);
+	tee(outputFile, "\nPackets processed = %i\n", processedPackets);
+  tee(outputFile, "Average table accesses = %.2lf\n", averageTableAccesses);
+  tee(outputFile,"Average packet processing time (nsecs) = %.2lf\n", averagePacketProcessingTime);
 	printMemoryTimeUsage();
 
 }
