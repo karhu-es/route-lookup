@@ -1,2 +1,6 @@
-# Route_lookup
+# Routing Lookups in Hardware [algorithm] at Memory Access Speeds
 Implementation of the decision logic of a router based on binary search with hash.
+
+# Abstract
+
+Increased bandwidth in the Internet puts great demands on network routers; for example, to route minimum sized Gigabit Ethernet packets, an IP router must process about 1.5x10^6 packets per second per port. Using the “rule-of-thumb” that it takes roughly 1000 packets per second for every 106 bits per second of line rate, an OC-192 line requires 10x10^6 routing lookups per second; well above current router capabilities. One limitation of router performance is the route lookup mechanism. IP routing requires that a router perform a longest-prefix-match address lookup for each incoming datagram in order to determine the datagram’s next hop. In this paper, we present a route lookup mechanism that when implemented in a pipelined fashion in hardware, can achieve one route lookup every memory access. With current 50ns DRAM, this corresponds to approximately 20x10^6 packets per second; much faster than current commercially available routing lookup schemes. We also present novel schemes for performing quick updates to the forwarding table in hardware. We demonstrate using real routing update patterns that the routing tables can be updated with negligible overhead to the central processor.
